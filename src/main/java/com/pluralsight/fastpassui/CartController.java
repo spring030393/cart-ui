@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Controller
-public class FastPassController {
+public class CartController {
 
     @Autowired
     private WebClient.Builder webClientBuilder;
@@ -19,10 +19,10 @@ public class FastPassController {
 
         //WebClient client = WebClient.create();
 
-        FastPassCustomer customer = webClientBuilder.build().get()
+        Cart customer = webClientBuilder.build().get()
             .uri("http://fastpass-service/fastpass?fastpassid=" + fastpassid)
             .retrieve()
-            .bodyToMono(FastPassCustomer.class)
+            .bodyToMono(Cart.class)
             .block();
 		
 		System.out.println("fastpassid: " + fastpassid);
